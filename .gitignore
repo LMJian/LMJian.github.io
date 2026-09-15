@@ -25,5 +25,6 @@ Thumbs.db
 # 本地预览
 .jekyll-build/
 
-# 设计迭代备份
+# 设计迭代备份与视觉验收截图
 _backup/
+_shots/
