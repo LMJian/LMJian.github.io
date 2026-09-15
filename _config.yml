@@ -1,0 +1,26 @@
+title: 李明健的博客
+description: 记录技术、生活与思考
+author: 李明健
+email: limingjian@bytedance.com
+
+# 主题 - GitHub Pages 官方支持的主题之一
+theme: jekyll-theme-minimal
+
+# 博客基础配置
+baseurl: ""
+url: "https://limingjian.github.io"
+
+# 文章链接格式
+permalink: /:year/:month/:day/:title/
+
+# 分页
+paginate: 10
+
+# Markdown 配置
+markdown: kramdown
+highlighter: rouge
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
