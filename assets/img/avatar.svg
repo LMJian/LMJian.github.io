@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">LMJian 技术博客头像</title>
+  <desc id="desc">深蓝背景上的 LM 字母与代码括号图形</desc>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10283A"/>
+      <stop offset="1" stop-color="#07111D"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="130" y1="148" x2="386" y2="372" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DD6EB"/>
+      <stop offset="1" stop-color="#38B6D6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="256" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#45C5E6" stroke-opacity=".22" stroke-width="2"/>
+  <path d="M168 164L99 256l69 92" fill="none" stroke="url(#mark)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M344 164l69 92-69 92" fill="none" stroke="url(#mark)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M214 335V184l42 73 42-73v151" fill="none" stroke="#F2FAFD" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="394" cy="118" r="12" fill="#42D392"/>
+</svg>

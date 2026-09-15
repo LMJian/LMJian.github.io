@@ -24,3 +24,6 @@ Thumbs.db
 
 # 本地预览
 .jekyll-build/
+
+# 设计迭代备份
+_backup/

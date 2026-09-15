@@ -34,7 +34,7 @@ timezone: Asia/Shanghai
 author:
   name: 李明健
   email: limingjian@bytedance.com
-  avatar: /assets/img/avatar.png
+  avatar: /assets/img/avatar.svg
   # 社交链接
   links:
     - name: GitHub
@@ -161,7 +161,6 @@ defaults:
       type: tabs
     values:
       layout: page
-      permalink: /:title/
       dynamic_title: true
       breadcrumb: true
 
