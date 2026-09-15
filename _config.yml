@@ -8,7 +8,7 @@ theme: jekyll-theme-minimal
 
 # 博客基础配置
 baseurl: ""
-url: "https://limingjian.github.io"
+url: "https://LMJian.github.io"
 
 # 文章链接格式
 permalink: /:year/:month/:day/:title/
