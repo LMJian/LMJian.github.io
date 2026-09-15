@@ -1,26 +1,187 @@
+# ==============================
+# Chirpy 主题配置
+# ==============================
+
+# 主题
+theme: jekyll-theme-chirpy
+
+# 网站语言
+lang: zh-CN
+
+# 网站标题
 title: 李明健的博客
-description: 记录技术、生活与思考
-author: 李明健
-email: limingjian@bytedance.com
 
-# 主题 - GitHub Pages 官方支持的主题之一
-theme: jekyll-theme-minimal
+# 网站副标题 / 标语
+tagline: 记录技术、生活与思考
 
-# 博客基础配置
-baseurl: ""
+# 网站描述（SEO）
+description: >-
+  李明健的个人技术博客，分享后端开发、系统架构、AI 工程化、
+  工具效率以及读书生活等内容。
+
+# 网站 URL
 url: "https://LMJian.github.io"
 
-# 文章链接格式
-permalink: /:year/:month/:day/:title/
+# 网站根路径
+baseurl: ""
 
+# 时区
+timezone: Asia/Shanghai
+
+# ==============================
+# 作者信息
+# ==============================
+author:
+  name: 李明健
+  email: limingjian@bytedance.com
+  avatar: /assets/img/avatar.png
+  # 社交链接
+  links:
+    - name: GitHub
+      icon: "fa-brands fa-github"
+      url: "https://github.com/LMJian"
+    - name: Email
+      icon: "fa-solid fa-envelope"
+      url: "mailto:limingjian@bytedance.com"
+
+# ==============================
+# 社交链接（页脚显示）
+# ==============================
+social:
+  name: 李明健
+  email: limingjian@bytedance.com
+  links:
+    - https://github.com/LMJian
+
+# ==============================
+# GitHub 信息
+# ==============================
+github:
+  username: LMJian
+
+# ==============================
+# 主题外观
+# ==============================
+# 主题模式：空=跟随系统, dark=暗黑, light=明亮
+theme_mode:
+
+# 主题色
+theme_color:
+  light: "#1f8fff"
+  dark: "#1f8fff"
+
+# 代码高亮主题
+code_lint:
+  all: true
+
+# ==============================
+# 功能开关
+# ==============================
+# 搜索
+search: true
+
+# 文章目录
+toc: true
+
+# 相关文章推荐
+related_posts: true
+
+# 文章更新时间显示
+last_modified_at: true
+
+# 面包屑导航
+breadcrumb: true
+
+# 返回顶部按钮
+back_to_top: true
+
+# 阅读进度条
+read_time: true
+words_per_minute: 300
+
+# ==============================
 # 分页
+# ==============================
 paginate: 10
+paginate_path: "/page:num/"
 
+# ==============================
+# 文章链接格式
+# ==============================
+permalink: /posts/:title/
+
+# ==============================
 # Markdown 配置
+# ==============================
 markdown: kramdown
 highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
+# ==============================
 # 插件
+# ==============================
 plugins:
-  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-redirect-from
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# ==============================
+# 集合
+# ==============================
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+# ==============================
+# 默认 Front Matter
+# ==============================
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+      breadcrumb: true
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+      dynamic_title: true
+      breadcrumb: true
+
+# ==============================
+# 排除文件
+# ==============================
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md
+  - .github
+  - .gitignore
+
+# ==============================
+# 服务器配置（本地预览）
+# ==============================
+webrick:
+  headers:
+    "Cache-Control": "no-cache, no-store, must-revalidate"
+    "Pragma": "no-cache"
+    "Expires": "0"
