@@ -137,6 +137,8 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-archives
+  - jekyll-include-cache
 
 # ==============================
 # 集合
@@ -163,8 +165,21 @@ defaults:
       type: tabs
     values:
       layout: page
+      permalink: /:title/
       dynamic_title: true
       breadcrumb: true
+
+# ==============================
+# 分类与标签归档
+# ==============================
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 # ==============================
 # 排除文件
