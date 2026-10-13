@@ -3,44 +3,13 @@ layout: default
 ---
 {% include lang.html %}
 
-<section class="tech-hero" aria-labelledby="tech-hero-title">
-  <div class="tech-hero__copy">
-    <div class="tech-hero__kicker">系统在线 · 持续构建</div>
-    <h1 id="tech-hero-title">把复杂技术，<br>写成清晰答案。</h1>
-    <p class="tech-hero__intro">
-      这里记录后端开发、系统架构与 AI 工程化实践，也沉淀那些值得复用的工具、方法与思考。
-    </p>
-    <ul class="tech-hero__topics" aria-label="博客主题">
-      <li>Backend</li>
-      <li>Architecture</li>
-      <li>AI Engineering</li>
-      <li>Developer Tools</li>
-    </ul>
-  </div>
-
-  <div class="tech-terminal" aria-label="博客主题终端摘要">
-    <div class="tech-terminal__bar">
-      <span class="tech-terminal__dot"></span>
-      <span class="tech-terminal__dot"></span>
-      <span class="tech-terminal__dot"></span>
-      <span class="tech-terminal__title">~/Mason/blog</span>
-    </div>
-    <pre><span class="prompt">$</span> cat focus.yml
-<span class="comment"># engineering notes</span>
-backend: <span class="value">scalable</span>
-architecture: <span class="value">pragmatic</span>
-ai: <span class="value">production-ready</span>
-writing: <span class="value">clear</span>
-
-<span class="prompt">$</span> git status --short
-<span class="value">A</span>  new-ideas.md
-<span class="value">M</span>  better-systems.md</pre>
-  </div>
+<section class="home-intro" aria-labelledby="home-intro-title">
+  <h1 id="home-intro-title">{{ site.title | escape }}</h1>
+  <p>记录后端开发、系统架构与 AI 学习实践。</p>
 </section>
 
 <div class="section-heading">
   <h2>最新文章</h2>
-  <span>latest.log</span>
 </div>
 
 {% assign visible_posts = site.posts | where_exp: 'item', 'item.hidden != true' %}

@@ -1,6 +1,6 @@
 ---
 # the front matter of the About tab
-icon: fa-circle-info
+icon: fa-solid fa-circle-info
 order: 5
 ---
 
