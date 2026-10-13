@@ -30,6 +30,7 @@ JEKYLL_ENV=production bundle exec jekyll serve
 提交前验证：
 
 ```bash
+python3 scripts/check_tracked_files.py
 bundle exec ruby scripts/check_home.rb
 bundle exec ruby scripts/check_lastmod.rb
 JEKYLL_ENV=production bundle exec jekyll build
@@ -37,6 +38,12 @@ python3 scripts/check_site.py _site
 ```
 
 `Gemfile.lock` 固定已验证的依赖；升级依赖后重新运行上述检查。
+
+临时报告、验收截图、构建结果、缓存和本地环境变量不应提交。
+添加文件到暂存区后、提交前，运行 `python3 scripts/check_tracked_files.py`。
+`.gitignore` 不会自动取消已有文件的跟踪；若检查失败，使用
+`git rm --cached -- <文件路径>` 取消跟踪并保留本地文件。
+GitHub Actions 也会运行此检查；它可以阻止部署，但不能撤回已经推送的文件。
 
 ## 写新文章
 

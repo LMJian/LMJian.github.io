@@ -24,6 +24,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check tracked files
+        run: python3 scripts/check_tracked_files.py
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
