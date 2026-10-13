@@ -6,7 +6,7 @@ order: 5
 
 ## 关于我
 
-你好，我是**李明健**，一名技术从业者，目前在 ByteDance 从事 AI Friendly Engineering 相关工作。
+你好，我是 **Mason**，一名关注后端开发、系统架构与 AI 工程化的技术从业者。
 
 ### 技术栈
 
@@ -22,7 +22,7 @@ order: 5
 
 ### 联系方式
 
-- **Email**：limingjian@bytedance.com
-- **GitHub**：[@LMJian](https://github.com/LMJian)
+- **Email**：[limingjian.yy@gmail.com](mailto:limingjian.yy@gmail.com)
+- **GitHub**：[Mason](https://github.com/LMJian)
 
 欢迎交流与讨论！

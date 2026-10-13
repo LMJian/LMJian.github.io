@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">LMJian 技术博客头像</title>
-  <desc id="desc">深蓝背景上的 LM 字母与代码括号图形</desc>
+  <title id="title">Mason 技术博客头像</title>
+  <desc id="desc">深蓝背景上的 M 字母与代码括号图形</desc>
   <defs>
     <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
       <stop stop-color="#10283A"/>

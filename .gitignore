@@ -7,7 +7,6 @@ _site/
 # Ruby
 vendor/
 .bundle/
-Gemfile.lock
 
 # Node
 node_modules/
@@ -28,3 +27,4 @@ Thumbs.db
 # 设计迭代备份与视觉验收截图
 _backup/
 _shots/
+.artifacts/

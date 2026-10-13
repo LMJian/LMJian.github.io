@@ -11,7 +11,7 @@
 ';
 
 /* =========================================================
-   LMJian Tech Blog — custom visual layer
+   Mason Tech Blog — custom visual layer
    Direction: an engineer's workbench, calm and information-led.
    ========================================================= */
 
@@ -30,7 +30,7 @@
   --lm-shadow: 0 12px 34px rgba(31, 53, 73, 0.07);
 }
 
-html[data-mode='dark'] {
+@mixin lm-dark-colors {
   --lm-accent: #45c5e6;
   --lm-accent-strong: #78d8ef;
   --lm-accent-soft: #12313d;
@@ -42,6 +42,16 @@ html[data-mode='dark'] {
   --lm-code: #07111d;
   --lm-code-ink: #d5f4ff;
   --lm-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+:root[data-bs-theme='dark'] {
+  @include lm-dark-colors;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-bs-theme]) {
+    @include lm-dark-colors;
+  }
 }
 
 body {
@@ -68,14 +78,14 @@ a {
   padding-top: 2.4rem;
 }
 
-#sidebar .site-title a {
+#sidebar .site-title {
   color: #f4f8fb;
   font-size: 1.42rem;
   font-weight: 700;
   letter-spacing: -0.035em;
 }
 
-#sidebar .site-title a::after {
+#sidebar .site-title::after {
   content: '_';
   margin-left: 0.12em;
   color: #45c5e6;
@@ -404,7 +414,7 @@ article h1 {
   background: var(--lm-accent-soft);
 }
 
-.content :not(pre) > code {
+.content code.highlighter-rouge {
   border: 1px solid color-mix(in srgb, var(--lm-accent) 22%, var(--lm-line));
   border-radius: 4px;
   color: var(--lm-accent-strong);
@@ -412,12 +422,11 @@ article h1 {
   font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
 }
 
-div[class^='language-'],
-figure.highlight,
-.highlighter-rouge {
-  border: 1px solid color-mix(in srgb, var(--lm-accent) 20%, #25384a);
+div.highlighter-rouge,
+figure.highlight {
+  border: 1px solid var(--lm-line);
   border-radius: 9px;
-  background: var(--lm-code);
+  background: var(--highlight-bg-color);
   box-shadow: 0 14px 30px rgba(5, 18, 30, 0.12);
 }
 

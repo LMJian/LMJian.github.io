@@ -1,4 +1,4 @@
-# 李明健的博客
+# Mason 的博客
 
 基于 GitHub Pages + Jekyll + Chirpy 主题搭建的个人技术博客。
 
@@ -15,15 +15,28 @@ https://LMJian.github.io/
 
 ## 本地预览
 
+使用 Ruby 3.3 和 Bundler（系统自带的 Ruby 2.6 不支持当前主题）。
+
 ```bash
 # 安装依赖
 bundle install
 
 # 启动本地服务器
-bundle exec jekyll serve
+JEKYLL_ENV=production bundle exec jekyll serve
 
 # 访问 http://localhost:4000
 ```
+
+提交前验证：
+
+```bash
+bundle exec ruby scripts/check_home.rb
+bundle exec ruby scripts/check_lastmod.rb
+JEKYLL_ENV=production bundle exec jekyll build
+python3 scripts/check_site.py _site
+```
+
+`Gemfile.lock` 固定已验证的依赖；升级依赖后重新运行上述检查。
 
 ## 写新文章
 
@@ -35,10 +48,16 @@ title: "文章标题"
 date: 2026-09-15 10:00:00 +0800
 categories: [分类]
 tags: [标签1, 标签2]
+description: "用于首页摘要和搜索引擎的简短介绍"
+math: true # 包含公式时启用
+media_subpath: /assets/img/posts/文章目录
 ---
 
 文章内容...
 ```
+
+图片存放在对应的 `assets/img/posts/` 目录中，正文可使用相对图片名。
+文章标题由主题渲染，正文从引言和二级标题开始，避免重复一级标题。
 
 ## 部署
 
