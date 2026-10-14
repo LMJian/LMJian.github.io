@@ -66,6 +66,19 @@ media_subpath: /assets/img/posts/文章目录
 图片存放在对应的 `assets/img/posts/` 目录中，正文可使用相对图片名。
 文章标题由主题渲染，正文从引言和二级标题开始，避免重复一级标题。
 
+## 文章配套代码
+
+机器学习文章的可运行项目位于 `examples/order-cancel/`，运行方式见该目录的 README。
+修改示例后，重新生成并校验下载包：
+
+```bash
+python3 scripts/package_order_demo.py
+python3 scripts/package_order_demo.py --check
+```
+
+打包使用固定文件清单，不包含训练生成的模型、评估输出或本地虚拟环境。
+`examples/` 不直接复制到站点，文章通过 `assets/downloads/order-cancel-demo.zip` 提供下载。
+
 ## 部署
 
 推送到 `main` 分支后，GitHub Actions 会自动构建并部署。

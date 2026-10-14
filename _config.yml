@@ -195,6 +195,7 @@ exclude:
   - .gitignore
   - .artifacts
   - scripts
+  - examples
 
 # ==============================
 # 服务器配置（本地预览）

@@ -1,0 +1,4 @@
+model.joblib
+evaluation.json
+.venv/
+__pycache__/
