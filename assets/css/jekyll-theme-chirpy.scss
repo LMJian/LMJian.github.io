@@ -422,6 +422,22 @@ article h1 {
   max-width: 100%;
 }
 
+/* Keep section titles visible below the sticky top bar after anchor jumps. */
+.content h2,
+.content h3,
+.content h4,
+.content a[id] {
+  scroll-margin-top: 4rem;
+}
+
+/* Keep long equations scrollable within the article on narrow screens. */
+.content mjx-container[display='true'] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25em;
+}
+
 .content a:not(.img-link) {
   color: var(--lm-accent-strong);
   text-decoration-color: color-mix(in srgb, var(--lm-accent) 35%, transparent);

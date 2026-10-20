@@ -15,6 +15,7 @@ class Page(HTMLParser):
         self.refs = []
         self.main_refs = []
         self.nav_icons = []
+        self.lazy_images = []
         self.in_main = False
         self.in_sidebar = False
         self.in_nav = False
@@ -34,6 +35,8 @@ class Page(HTMLParser):
             self.main_refs.append(attrs["href"])
         if attrs.get("id"):
             self.ids.add(attrs["id"])
+        if tag == "img" and attrs.get("loading") == "lazy":
+            self.lazy_images.append(attrs)
         for key in ("href", "src", "data-src"):
             if attrs.get(key):
                 self.refs.append(attrs[key])
@@ -52,6 +55,13 @@ def check(root, baseurl=""):
     errors = []
     checked = 0
     for path, page in pages.items():
+        for image in page.lazy_images:
+            if any(not image.get(key, "").isdigit() or int(image[key]) <= 0
+                   for key in ("width", "height")):
+                errors.append(
+                    f"{path.relative_to(root)}: lazy image must reserve width and height: "
+                    f"{image.get('src', image.get('data-src', '(no source)'))}"
+                )
         icon_styles = {"fa", "fas", "far", "fab", "fa-solid", "fa-regular", "fa-brands"}
         if any(not classes & icon_styles for classes in page.nav_icons):
             errors.append(f"{path.relative_to(root)}: navigation icon missing font style")

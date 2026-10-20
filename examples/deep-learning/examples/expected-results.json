@@ -1,0 +1,56 @@
+{
+  "linear": {
+    "weight": 2.4946846961975098,
+    "bias": 5.201716899871826,
+    "first_train_mse": 14.22221736907959,
+    "last_train_mse": 0.009974764054641127,
+    "test_mse": 0.012541231699287891
+  },
+  "mnist": {
+    "task": "mnist",
+    "epochs": 5,
+    "device": "cpu",
+    "train_samples": 9600,
+    "val_samples": 2400,
+    "test_samples": 10000,
+    "torch": "2.9.0",
+    "best_val_loss": 0.26242629090944924,
+    "test": {
+      "loss": 0.24229582480192186,
+      "accuracy": 0.9308
+    },
+    "preprocessing": "ToTensor: grayscale uint8 -> [N,1,28,28] float32 / 255"
+  },
+  "fashion": {
+    "task": "fashion",
+    "epochs": 5,
+    "device": "cpu",
+    "train_samples": 9600,
+    "val_samples": 2400,
+    "test_samples": 10000,
+    "torch": "2.9.0",
+    "best_val_loss": 0.4257934999465942,
+    "test": {
+      "loss": 0.4550662902832031,
+      "accuracy": 0.8387
+    },
+    "preprocessing": "ToTensor: grayscale uint8 -> [N,1,28,28] float32 / 255"
+  },
+  "house": {
+    "data": "synthetic, not real market prices",
+    "train_samples": 720,
+    "val_samples": 240,
+    "test_samples": 240,
+    "features": [
+      "numeric__area",
+      "numeric__age",
+      "category__district_A",
+      "category__district_B",
+      "category__district_C",
+      "category__district_missing"
+    ],
+    "test_log_rmse": 0.09774991104876009,
+    "test_mae": 30494.83480275508,
+    "constant_baseline_log_rmse": 0.4134574481886668
+  }
+}

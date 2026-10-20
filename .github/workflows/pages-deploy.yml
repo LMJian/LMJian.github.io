@@ -27,6 +27,11 @@ jobs:
       - name: Check tracked files
         run: python3 scripts/check_tracked_files.py
 
+      - name: Check example download packages
+        run: |
+          python3 scripts/package_order_demo.py --check
+          python3 scripts/package_deep_learning_demo.py --check
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

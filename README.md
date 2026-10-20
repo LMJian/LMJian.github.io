@@ -31,6 +31,8 @@ JEKYLL_ENV=production bundle exec jekyll serve
 
 ```bash
 python3 scripts/check_tracked_files.py
+python3 scripts/package_order_demo.py --check
+python3 scripts/package_deep_learning_demo.py --check
 bundle exec ruby scripts/check_home.rb
 bundle exec ruby scripts/check_lastmod.rb
 JEKYLL_ENV=production bundle exec jekyll build
@@ -66,6 +68,21 @@ media_subpath: /assets/img/posts/文章目录
 图片存放在对应的 `assets/img/posts/` 目录中，正文可使用相对图片名。
 文章标题由主题渲染，正文从引言和二级标题开始，避免重复一级标题。
 
+为图片声明实际宽高，给延迟加载的图片预留空间，避免章节跳转后位置漂移。
+Kramdown 的图片属性必须紧跟在图片后面，写在同一行：
+
+```markdown
+![图片说明](figure.png){: width="1600" height="900" }
+```
+
+若将属性单独写在下一行，宽高会落在外层段落上，对图片无效。
+构建检查会拒绝缺少宽高的延迟加载图片。
+
+本项目使用 Kramdown。新文章的行内公式建议写成 `$$x_i$$`，由解析器生成
+MathJax 的行内定界符；独立公式将 `$$` 各占一行。
+绝对值用 `\lvert x\rvert`，避免裸竖线被识别为表格。
+构建后检查公式，尤其是撇号、下标和表格中的公式，避免 Markdown 排版改变数学含义。
+
 ## 文章配套代码
 
 机器学习文章的可运行项目位于 `examples/order-cancel/`，运行方式见该目录的 README。
@@ -78,6 +95,17 @@ python3 scripts/package_order_demo.py --check
 
 打包使用固定文件清单，不包含训练生成的模型、评估输出或本地虚拟环境。
 `examples/` 不直接复制到站点，文章通过 `assets/downloads/order-cancel-demo.zip` 提供下载。
+
+深度学习文章的示例位于 `examples/deep-learning/`，包含 5 个脚本及固定版本依赖。
+18 张图统一维护在 `assets/img/posts/deep-learning/`，同时收入下载包：
+
+```bash
+python3 scripts/package_deep_learning_demo.py
+python3 scripts/package_deep_learning_demo.py --check
+```
+
+文章通过 `assets/downloads/deep-learning-demo.zip` 提供代码与图解。
+修改源码、图片或说明后，应重新生成 ZIP；GitHub Actions 会检查两个下载包与源文件是否一致。
 
 ## 部署
 
