@@ -39,3 +39,7 @@ Thumbs.db
 _backup/
 _shots/
 .artifacts/
+
+# Harness configuration is public; task state and local evidence stay local.
+.harness/*
+!.harness/project.json

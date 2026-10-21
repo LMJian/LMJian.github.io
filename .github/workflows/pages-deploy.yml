@@ -32,6 +32,9 @@ jobs:
           python3 scripts/package_order_demo.py --check
           python3 scripts/package_deep_learning_demo.py --check
 
+      - name: Validate annual holiday data
+        run: python3 scripts/check_holidays.py
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -52,8 +55,16 @@ jobs:
           bundle exec ruby scripts/check_home.rb
           bundle exec ruby scripts/check_lastmod.rb
 
+      - name: Verify holiday data does not change blog pages
+        run: bundle exec ruby scripts/check_holiday_isolation.rb
+        env:
+          JEKYLL_ENV: production
+
       - name: Check generated pages
         run: python3 scripts/check_site.py _site "${{ steps.pages.outputs.base_path }}"
+
+      - name: Verify published holiday files
+        run: python3 scripts/check_holidays.py --site _site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

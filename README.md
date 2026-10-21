@@ -33,10 +33,13 @@ JEKYLL_ENV=production bundle exec jekyll serve
 python3 scripts/check_tracked_files.py
 python3 scripts/package_order_demo.py --check
 python3 scripts/package_deep_learning_demo.py --check
+python3 scripts/check_holidays.py
+bundle exec ruby scripts/check_holiday_isolation.rb
 bundle exec ruby scripts/check_home.rb
 bundle exec ruby scripts/check_lastmod.rb
 JEKYLL_ENV=production bundle exec jekyll build
 python3 scripts/check_site.py _site
+python3 scripts/check_holidays.py --site _site
 ```
 
 `Gemfile.lock` 固定已验证的依赖；升级依赖后重新运行上述检查。
@@ -110,3 +113,9 @@ python3 scripts/package_deep_learning_demo.py --check
 ## 部署
 
 推送到 `main` 分支后，GitHub Actions 会自动构建并部署。
+
+## 卷轴年度调休数据
+
+`assets/holidays/cn/index.json` 是客户端版本索引，`YYYY.vN.json` 是不可变的年度文件。这里只托管静态 JSON，不新增下载网页，不修改博客首页、导航、搜索或文章。数据依据国务院通知整理，当前包含 2026 年的 33 个休息日和 6 个补班日；发布流程及协议见仅供仓库维护的 [数据约定](_docs/holiday-data.md)。
+
+运行 `python3 scripts/check_holidays.py` 校验独立日期对照、哈希和实际本地 HTTP 下载。Pages CI 同时校验源文件与 `_site` 中的文件，并对比有无年度文件时的站点构建结果，确认 JSON 不影响网页。本地通过不代表线上已发布，发布后须下载线上文件核对。App 首次安装使用内置副本，后续下载失败仍保留已有数据。

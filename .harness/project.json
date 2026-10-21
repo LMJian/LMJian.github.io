@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "base_ref": "main",
+  "max_attempts": 3,
+  "parallel_max": 1,
+  "check_timeout_seconds": 300,
+  "review_max_age_seconds": 7200,
+  "checks": {
+    "holiday-data": {
+      "argv": [
+        "python3",
+        "scripts/check_holidays.py"
+      ]
+    },
+    "git-hygiene": {
+      "argv": [
+        "python3",
+        "scripts/check_tracked_files.py"
+      ]
+    },
+    "holiday-isolation": {
+      "argv": [
+        "bundle",
+        "exec",
+        "ruby",
+        "scripts/check_holiday_isolation.rb"
+      ]
+    },
+    "blog-build": {
+      "argv": [
+        "env",
+        "JEKYLL_ENV=production",
+        "bundle",
+        "exec",
+        "jekyll",
+        "build"
+      ]
+    },
+    "blog-output": {
+      "argv": [
+        "python3",
+        "scripts/check_site.py",
+        "_site"
+      ]
+    },
+    "holiday-output": {
+      "argv": [
+        "python3",
+        "scripts/check_holidays.py",
+        "--site",
+        "_site"
+      ]
+    },
+    "homepage": {
+      "argv": [
+        "bundle",
+        "exec",
+        "ruby",
+        "scripts/check_home.rb"
+      ]
+    },
+    "lastmod": {
+      "argv": [
+        "bundle",
+        "exec",
+        "ruby",
+        "scripts/check_lastmod.rb"
+      ]
+    }
+  },
+  "stage_checks": {
+    "review": [
+      "holiday-data",
+      "git-hygiene",
+      "holiday-isolation",
+      "blog-build",
+      "blog-output",
+      "holiday-output",
+      "homepage",
+      "lastmod"
+    ],
+    "integration": []
+  },
+  "adapters": {
+    "push": {
+      "argv": [
+        "python3",
+        "{plugin_root}/adapters/git_push.py",
+        "--remote",
+        "origin"
+      ],
+      "effect": "external",
+      "timeout_seconds": 240
+    }
+  },
+  "workflow": {
+    "profile": "codex",
+    "target": "local",
+    "isolation": "checkout",
+    "assistance": "autonomous",
+    "entry": "develop",
+    "integration_position": "before_push",
+    "knowledge_approval": false,
+    "stages": {},
+    "domain": "generic",
+    "capabilities": {
+      "recon": "auto",
+      "design": "auto",
+      "design_audit": "auto",
+      "review": "auto"
+    }
+  },
+  "host": {
+    "name": "codex",
+    "available": [],
+    "command": {
+      "provider": "auto"
+    },
+    "worktree": "auto"
+  }
+}
