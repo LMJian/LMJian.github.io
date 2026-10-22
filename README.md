@@ -35,6 +35,8 @@ python3 scripts/check_tracked_files.py
 python3 scripts/package_order_demo.py --check
 python3 scripts/package_deep_learning_demo.py --check
 python3 scripts/package_nlp_huggingface_demo.py --check
+python3 scripts/package_codex_context_demo.py --check
+python3 examples/codex-context-memory/examples/context_demo.py
 python3 scripts/check_holidays.py
 bundle exec ruby scripts/check_holiday_isolation.rb
 bundle exec ruby scripts/check_home.rb
@@ -124,7 +126,17 @@ python3 scripts/package_nlp_huggingface_demo.py --check
 文章通过 `assets/downloads/nlp-huggingface-demo.zip` 提供完整学习包。
 打包脚本从站点文章生成离线 Markdown，将代码与图片链接改为包内路径，
 并收入知识点覆盖说明和复核报告。修改文章、源码、图片或说明后，重新生成 ZIP。
-GitHub Actions 会检查三个下载包与源文件是否一致。
+Codex 短期记忆文章的配套文件位于 `examples/codex-context-memory/`，包含无第三方依赖的 Python 示例与核验说明。
+
+```bash
+python3 examples/codex-context-memory/examples/context_demo.py
+python3 scripts/package_codex_context_demo.py
+python3 scripts/package_codex_context_demo.py --check
+```
+
+文章通过 `assets/downloads/codex-context-memory.zip` 提供离线正文、3 张配图与示例。
+
+GitHub Actions 会检查四个下载包与源文件是否一致。
 
 ## 部署
 

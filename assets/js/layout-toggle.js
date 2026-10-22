@@ -61,4 +61,41 @@
       document.getElementById('sidebar-trigger').click();
     }
   });
+
+  const toc = window.tocbot;
+  const heading = document.querySelector('.content h2');
+  if (toc && heading) {
+    const wideToc = window.matchMedia('(min-width: 1200px)');
+    const alignToc = () => {
+      const container = document.querySelector(
+        wideToc.matches ? '#toc' : '#toc-popup-content'
+      );
+      if (!container) return;
+      const handlers = new Map(
+        [...container.querySelectorAll('.toc-link')]
+          .filter((link) => typeof link.onclick === 'function')
+          .map((link) => [link.getAttribute('href'), link.onclick])
+      );
+      const margin = parseFloat(getComputedStyle(heading).scrollMarginTop) || 0;
+      toc.refresh({
+        tocSelector: wideToc.matches ? '#toc' : '#toc-popup-content',
+        contentSelector: '.content',
+        ignoreSelector: '[data-toc-skip]',
+        headingSelector: 'h2, h3, h4',
+        orderedList: false,
+        scrollSmooth: false,
+        collapseDepth: wideToc.matches ? 0 : 4,
+        headingsOffset: margin + 1
+      });
+      // Refresh rebuilds links; retain Chirpy's popup-close callbacks.
+      for (const link of container.querySelectorAll('.toc-link')) {
+        const handler = handlers.get(link.getAttribute('href'));
+        if (handler) link.onclick = handler;
+      }
+      document.dispatchEvent(new Event('scroll', { bubbles: true }));
+    };
+    // Chirpy rebuilds the TOC on breakpoint changes; align it afterward.
+    wideToc.addEventListener('change', () => requestAnimationFrame(alignToc));
+    alignToc();
+  }
 })();
