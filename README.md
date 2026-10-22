@@ -19,6 +19,7 @@ https://LMJian.github.io/
 
 ```bash
 # 安装依赖
+bundle config set --local path vendor/bundle
 bundle install
 
 # 启动本地服务器
@@ -33,6 +34,7 @@ JEKYLL_ENV=production bundle exec jekyll serve
 python3 scripts/check_tracked_files.py
 python3 scripts/package_order_demo.py --check
 python3 scripts/package_deep_learning_demo.py --check
+python3 scripts/package_nlp_huggingface_demo.py --check
 python3 scripts/check_holidays.py
 bundle exec ruby scripts/check_holiday_isolation.rb
 bundle exec ruby scripts/check_home.rb
@@ -108,7 +110,21 @@ python3 scripts/package_deep_learning_demo.py --check
 ```
 
 文章通过 `assets/downloads/deep-learning-demo.zip` 提供代码与图解。
-修改源码、图片或说明后，应重新生成 ZIP；GitHub Actions 会检查两个下载包与源文件是否一致。
+修改源码、图片或说明后，应重新生成 ZIP。
+
+NLP 与 Hugging Face 文章的示例位于 `examples/nlp-huggingface/`，包含 8 个运行入口、
+1 个共享模块、教学数据与固定版本依赖。14 张图统一维护在
+`assets/img/posts/nlp-huggingface/`：
+
+```bash
+python3 scripts/package_nlp_huggingface_demo.py
+python3 scripts/package_nlp_huggingface_demo.py --check
+```
+
+文章通过 `assets/downloads/nlp-huggingface-demo.zip` 提供完整学习包。
+打包脚本从站点文章生成离线 Markdown，将代码与图片链接改为包内路径，
+并收入知识点覆盖说明和复核报告。修改文章、源码、图片或说明后，重新生成 ZIP。
+GitHub Actions 会检查三个下载包与源文件是否一致。
 
 ## 部署
 

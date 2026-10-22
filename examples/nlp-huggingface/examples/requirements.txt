@@ -1,0 +1,8 @@
+numpy==2.5.4
+torch==2.6.0
+transformers==4.57.1
+datasets==4.2.0
+jieba==0.42.1
+gensim==4.4.0
+scikit-learn==1.7.2
+nltk==3.9.2

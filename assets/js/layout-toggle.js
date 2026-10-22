@@ -1,6 +1,16 @@
-/* Desktop layout preferences are independent of Chirpy's mobile drawer. */
+/* Site navigation controls and independent desktop layout preferences. */
 (() => {
   'use strict';
+
+  for (const [selector, label] of [
+    ['.toc-trigger:not(#toc-solo-trigger)', '文章目录'],
+    ['#back-to-top', '返回顶部']
+  ]) {
+    for (const button of document.querySelectorAll(selector)) {
+      if (!button.hasAttribute('aria-label')) button.setAttribute('aria-label', label);
+      button.querySelector('i')?.setAttribute('aria-hidden', 'true');
+    }
+  }
 
   const root = document.documentElement;
   const controls = [

@@ -31,6 +31,7 @@ jobs:
         run: |
           python3 scripts/package_order_demo.py --check
           python3 scripts/package_deep_learning_demo.py --check
+          python3 scripts/package_nlp_huggingface_demo.py --check
 
       - name: Validate annual holiday data
         run: python3 scripts/check_holidays.py
