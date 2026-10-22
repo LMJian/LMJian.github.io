@@ -1,0 +1,28 @@
+{
+  "model": "jev-latest",
+  "state": "同一笔订单被扣了两次钱，请帮我退掉重复扣款。",
+  "questions": {
+    "team": {
+      "type": "choice",
+      "instructions": "选择最适合接收此工单的团队。",
+      "criteria": {
+        "billing": "支付、扣款、账单和退款问题",
+        "technical": "软件故障、接口报错和功能异常",
+        "other": "其他问题或信息不足"
+      }
+    },
+    "impact": {
+      "type": "score",
+      "instructions": "只评估已报告的功能受损情况，不评价退款金额或客户情绪。",
+      "criteria": [
+        "没有报告功能受损，仅询问、提出建议或要求处理账务",
+        "报告了功能受损，且明确存在可用的替代方式",
+        "报告了功能受损，且明确不存在可用的替代方式"
+      ]
+    },
+    "refund_requested": {
+      "type": "noul",
+      "instructions": "用户是否明确要求退还款项？仅询问退款政策不算。"
+    }
+  }
+}

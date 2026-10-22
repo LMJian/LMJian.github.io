@@ -34,6 +34,8 @@ jobs:
           python3 scripts/package_nlp_huggingface_demo.py --check
           python3 scripts/package_codex_context_demo.py --check
           python3 examples/codex-context-memory/examples/context_demo.py
+          python3 scripts/package_jev_demo.py --check
+          python3 examples/jev/examples/decision_demo.py
 
       - name: Validate annual holiday data
         run: python3 scripts/check_holidays.py

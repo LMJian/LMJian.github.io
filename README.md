@@ -37,6 +37,8 @@ python3 scripts/package_deep_learning_demo.py --check
 python3 scripts/package_nlp_huggingface_demo.py --check
 python3 scripts/package_codex_context_demo.py --check
 python3 examples/codex-context-memory/examples/context_demo.py
+python3 scripts/package_jev_demo.py --check
+python3 examples/jev/examples/decision_demo.py
 python3 scripts/check_holidays.py
 bundle exec ruby scripts/check_holiday_isolation.rb
 bundle exec ruby scripts/check_home.rb
@@ -136,7 +138,19 @@ python3 scripts/package_codex_context_demo.py --check
 
 文章通过 `assets/downloads/codex-context-memory.zip` 提供离线正文、3 张配图与示例。
 
-GitHub Actions 会检查四个下载包与源文件是否一致。
+Jev 判断模型文章的配套文件位于 `examples/jev/`，包含无需第三方依赖的离线示例、
+三类问题的请求、在线调用脚本和复审记录。3 张原理图维护在 `assets/img/posts/jev/`：
+
+```bash
+python3 examples/jev/examples/decision_demo.py
+python3 scripts/package_jev_demo.py
+python3 scripts/package_jev_demo.py --check
+```
+
+文章通过 `assets/downloads/jev-demo.zip` 提供离线正文、图片与示例。
+离线正文从站点文章生成，修改源码、图片或说明后应重新生成 ZIP。
+
+GitHub Actions 会检查五个下载包与源文件是否一致。
 
 ## 部署
 
