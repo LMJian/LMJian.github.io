@@ -40,6 +40,8 @@ python3 examples/codex-context-memory/examples/context_demo.py
 python3 scripts/package_jev_demo.py --check
 python3 examples/jev/examples/decision_demo.py
 python3 scripts/package_prompt_engineering_demo.py --check
+python3 scripts/package_agent_learning_demos.py --check
+node examples/rea/examples/check-demo.mjs
 python3 scripts/check_holidays.py
 bundle exec ruby scripts/check_holiday_isolation.rb
 bundle exec ruby scripts/check_home.rb
@@ -163,7 +165,22 @@ python3 scripts/package_prompt_engineering_demo.py --check
 文章通过 `assets/downloads/prompt-engineering-demo.zip` 提供离线正文、配图与示例。
 修改文章、源码或图片后，重新生成 ZIP。
 
-GitHub Actions 会检查六个下载包与源文件是否一致，并运行提示词工程的最小校验示例。
+Personal Agent 与 REA 文章分别维护在 `_posts/2026-10-23-personal-agent-for-backend-engineers.md`
+和 `_posts/2026-10-23-rea-for-backend-engineers.md`，配套代码位于 `examples/personal-agent/`
+与 `examples/rea/`，三张配图分别位于对应的 `assets/img/posts/` 目录。
+
+```bash
+python3 scripts/package_agent_learning_demos.py
+python3 scripts/package_agent_learning_demos.py --check
+node examples/rea/examples/check-demo.mjs
+```
+
+Personal Agent 的状态恢复示例按 `examples/personal-agent/README.md` 在示例目录中运行。
+两个下载包分别为 `assets/downloads/personal-agent-demo.zip` 与 `assets/downloads/rea-demo.zip`。
+修改文章、源码或图片后，应重新生成 ZIP；离线正文从站点文章生成。
+REA 的业务示例测试不等于 REA CLI/MCP 或各原生后端已完成实测。
+
+GitHub Actions 会检查八个下载包与源文件是否一致，并运行提示词工程、Personal Agent 和 REA 的最小教学示例。
 
 ## 部署
 

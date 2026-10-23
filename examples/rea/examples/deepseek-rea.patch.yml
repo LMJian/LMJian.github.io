@@ -1,0 +1,9 @@
+# 合并到当前 profile 的 patch；已有同名 id 时修改原条目。
+- insert:
+    - id: mcp-rea
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: rea
+        transport: stdio
+        command: npx
+        args: ['-y', 'rea-agents@6.4.0', 'mcp']

@@ -1,0 +1,4 @@
+# 片段示例：合并到已有配置，不要覆盖整个文件。
+[mcp_servers.rea]
+command = "npx"
+args = ["-y", "rea-agents@6.4.0", "mcp"]

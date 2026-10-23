@@ -37,6 +37,18 @@ jobs:
           python3 scripts/package_jev_demo.py --check
           python3 examples/jev/examples/decision_demo.py
           python3 scripts/package_prompt_engineering_demo.py --check
+          python3 scripts/package_agent_learning_demos.py --check
+
+      - name: Setup Node for REA teaching example
+        uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+
+      - name: Validate Personal Agent and REA teaching examples
+        run: |
+          python3 examples/personal-agent/examples/task_state.py "$RUNNER_TEMP/personal-agent-task-state.json"
+          python3 examples/personal-agent/examples/task_state.py "$RUNNER_TEMP/personal-agent-task-state.json"
+          node examples/rea/examples/check-demo.mjs
 
       - name: Setup Python for prompt engineering example
         uses: actions/setup-python@v5
