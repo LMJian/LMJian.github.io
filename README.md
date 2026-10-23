@@ -39,6 +39,7 @@ python3 scripts/package_codex_context_demo.py --check
 python3 examples/codex-context-memory/examples/context_demo.py
 python3 scripts/package_jev_demo.py --check
 python3 examples/jev/examples/decision_demo.py
+python3 scripts/package_prompt_engineering_demo.py --check
 python3 scripts/check_holidays.py
 bundle exec ruby scripts/check_holiday_isolation.rb
 bundle exec ruby scripts/check_home.rb
@@ -150,7 +151,19 @@ python3 scripts/package_jev_demo.py --check
 文章通过 `assets/downloads/jev-demo.zip` 提供离线正文、图片与示例。
 离线正文从站点文章生成，修改源码、图片或说明后应重新生成 ZIP。
 
-GitHub Actions 会检查五个下载包与源文件是否一致。
+提示词工程文章的配套文件位于 `examples/prompt-engineering/`，包含 Pydantic 2 校验示例、
+JSON Schema 和复审记录。3 张示意图维护在 `assets/img/posts/prompt-engineering/`：
+
+```bash
+python3 scripts/package_prompt_engineering_demo.py
+python3 scripts/package_prompt_engineering_demo.py --check
+```
+
+按示例目录的 README 创建虚拟环境、安装依赖后，运行 `python examples/validate_triage.py`。
+文章通过 `assets/downloads/prompt-engineering-demo.zip` 提供离线正文、配图与示例。
+修改文章、源码或图片后，重新生成 ZIP。
+
+GitHub Actions 会检查六个下载包与源文件是否一致，并运行提示词工程的最小校验示例。
 
 ## 部署
 

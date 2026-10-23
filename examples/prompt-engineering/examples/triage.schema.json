@@ -1,0 +1,44 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "category": {
+      "enum": [
+        "upstream_timeout",
+        "db_pool_exhausted",
+        "unknown"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "evidence_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 3,
+      "title": "Evidence Ids",
+      "type": "array"
+    },
+    "missing_info": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 3,
+      "title": "Missing Info",
+      "type": "array"
+    },
+    "next_step": {
+      "maxLength": 100,
+      "minLength": 1,
+      "title": "Next Step",
+      "type": "string"
+    }
+  },
+  "required": [
+    "category",
+    "evidence_ids",
+    "missing_info",
+    "next_step"
+  ],
+  "title": "Triage",
+  "type": "object"
+}

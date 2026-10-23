@@ -36,6 +36,19 @@ jobs:
           python3 examples/codex-context-memory/examples/context_demo.py
           python3 scripts/package_jev_demo.py --check
           python3 examples/jev/examples/decision_demo.py
+          python3 scripts/package_prompt_engineering_demo.py --check
+
+      - name: Setup Python for prompt engineering example
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: examples/prompt-engineering/requirements.txt
+
+      - name: Validate prompt engineering example
+        run: |
+          python -m pip install -r examples/prompt-engineering/requirements.txt
+          python examples/prompt-engineering/examples/validate_triage.py
 
       - name: Validate annual holiday data
         run: python3 scripts/check_holidays.py
